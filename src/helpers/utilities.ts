@@ -184,8 +184,8 @@ export async function verifySignature(
   hash: string,
   chainId: number,
 ): Promise<boolean> {
-  const rpcUrl = getChainData(chainId).rpc_url;
-  const provider = new providers.JsonRpcProvider(rpcUrl);
+  // const rpcUrl = getChainData(chainId).rpc_url;
+  const provider = new providers.Web3Provider((window as any).ethereum);
   const bytecode = await provider.getCode(address);
   if (!bytecode || bytecode === "0x" || bytecode === "0x0" || bytecode === "0x00") {
     const signer = recoverAddress(sig, hash);

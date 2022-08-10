@@ -89,6 +89,7 @@ const Header = ({ connected, address, chainId, killSession }: IHeaderProps) => {
   try {
     activeChain = chainId ? getChainData(chainId).name : null;
   } catch (error) {
+    activeChain = "ChainID: "+(window as any).ethereum.chainId.toString()
     console.error(error);
   }
 
