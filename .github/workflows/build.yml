@@ -30,7 +30,7 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
     - name: Upload Pages artifact
-    - uses: actions/upload-pages-artifact@v1.0.2
+      uses: actions/upload-pages-artifact@v1.0.2
       with:
         # Path of the directory containing the static assets.
         path: build
