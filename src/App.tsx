@@ -14,7 +14,6 @@ import { fonts } from "./styles";
 import { apiGetAccountAssets } from "./helpers/api";
 import {
   verifySignature,
-  hashMessage,
 } from "./helpers/utilities";
 import { IAssetData } from "./helpers/types";
 import Banner from "./components/Banner";
@@ -141,6 +140,7 @@ interface IAppState {
   address: string;
   result: any | null;
   assets: IAssetData[];
+  dataHash: string;
 }
 
 const INITIAL_STATE: IAppState = {
@@ -155,6 +155,7 @@ const INITIAL_STATE: IAppState = {
   address: "",
   result: null,
   assets: [],
+  dataHash: "",
 };
 
 class App extends React.Component<any, any> {
@@ -284,17 +285,14 @@ class App extends React.Component<any, any> {
   public toggleModal = () => this.setState({ showModal: !this.state.showModal });
 
   public testLegacySignMessage = async () => {
-    const { connector, address, chainId } = this.state;
+    const { connector, address, chainId, dataHash } = this.state;
 
     if (!connector) {
       return;
     }
 
-    // test message
-    const message = `My email is john@doe.com - ${new Date().toUTCString()}`;
-
     // hash message
-    const hash = hashMessage(message);
+    const hash = dataHash;
 
     // eth_sign params
     const msgParams = [address, hash];
