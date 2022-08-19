@@ -15,7 +15,7 @@ importScripts("/walletconnect-sign-approve-hash/workbox-v3.6.3/workbox-sw.js");
 workbox.setConfig({modulePathPrefix: "/walletconnect-sign-approve-hash/workbox-v3.6.3"});
 
 importScripts(
-  "/walletconnect-sign-approve-hash/precache-manifest.f15c582969b1279f05fd4f77bb4317e1.js"
+  "/walletconnect-sign-approve-hash/precache-manifest.e7478226e9287fd3446d8f0a309f6a1c.js"
 );
 
 workbox.clientsClaim();
